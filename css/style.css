@@ -1,0 +1,38 @@
+body{
+	font-size: 20px;
+	font-family: sans-serif;
+	color: #333;
+	padding: 100px;
+	margin-left: 35%;
+	background-color: beige;
+	
+}
+.question{
+	font-weight: 600;
+}
+.answers {
+  margin-bottom: 20px;
+}
+.answers label{
+  display: block;
+}
+#submit{
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size: 40px;
+	background-color: rgb(34, 52, 153);
+	color: #fff;
+	border: 1px;
+	border-radius: 3px;
+	padding: 20px;
+	cursor: pointer;
+	margin-bottom: 20px;
+	margin-left: -15%;
+	
+}
+#submit:hover{
+	background-color: rgb(51, 170, 130);
+}
+
+#quiz{
+	background-color: gray;
+}
