@@ -3,7 +3,8 @@ const SignInButton = document.getElementById("SignInButton");
 SignInButton.addEventListener('click', registerUser);
 var uname = undefined;
 var miStorage = window.localStorage;
-
+var fecha = new Date(); 
+fecha=fecha.toDateString() +"; "+ fecha.toLocaleTimeString();
 
 
 
@@ -77,8 +78,12 @@ var clearStorageButton = document.getElementById("clearStorage");
 clearStorageButton.addEventListener('click', ClearData);
 
 const ResulContainer = document.getElementById('resultBody');
+const ResulTitleContainer = document.getElementById('exampleModalLongTitle');
+
+
 
 function showResults(){
+  
     score1=miStorage.getItem("grade1") ? miStorage.getItem("grade1") : "pendent" ;
     score2=miStorage.getItem("grade2") ? miStorage.getItem("grade2") : "pendent" ;
     score3=miStorage.getItem("grade3") ? miStorage.getItem("grade3") : "pendent" ;
@@ -135,6 +140,9 @@ function showResults(){
 
   
     `;
+
+    ResulTitleContainer.innerHTML=`ID: ${uname} Date: ${fecha}`;
+    
 }
 
 
@@ -162,3 +170,43 @@ function ClearData(){
     miStorage.setItem("nombre",uname);
 }
 
+//Create PDf from HTML...
+
+const downloadButton = document.getElementById("downloadB");
+downloadButton.addEventListener('click', CreatePDFfromHTML);
+
+function CreatePDFfromHTML() {
+  showResults();
+  console.log("Creando PDF");
+  
+    const elementoParaConvertir = document.getElementById("rTable");
+    html2pdf()
+      .set({
+        margin:1,
+        filename: 'results.pdf',
+        image: {
+          type: 'jpeg',
+          quality: 0.98
+        },
+
+        html2canvas: {
+          scale: 3,
+          letterRendering: true,
+        },
+
+        jsPDF: {
+          unit: "in",
+          format: "a3",
+          orientation: 'portrait'
+        }
+
+      })
+
+      .from(elementoParaConvertir)
+      .save()
+      .catch(err => console.log(err));
+
+  
+  
+
+}

@@ -11,11 +11,14 @@ function createQuiz(){
     
     const displayingQuiz=[];
     const headerQuiz=[];
+    var fecha = new Date(); 
+    fecha=fecha.toDateString() +"; "+ fecha.toLocaleTimeString();
+    
     headerQuiz.push(
         `<h3 class="text-secondary mb-0">Multiple Options</h3>
         <h2 class="mb-5">Quiz 1</h2>
         <h2 class="mb-5">ID: ${username}</h2>
-        <h4 class="mb-5">Date: ${Date()}</h4>`
+        <h4 class="mb-5">Date: ${fecha}</h4>`
         );
 
     //for (i=0; i<allQuestions.length;i++){
@@ -108,7 +111,7 @@ function checkQuiz(){
     alert(`Grade: ${numCorrect} out of ${allQuestions.length}`);
     //resultsContainer.innerHTML = `${numCorrect} out of ${allQuestions.length}`;
     score=numCorrect;
-    miStorage.setItem("grade1", score);
+    miStorage.setItem("grade2", `${numCorrect} / ${allQuestions.length}`);
 
 
 
